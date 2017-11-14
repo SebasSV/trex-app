@@ -1,15 +1,6 @@
 <template>
 
-  <div id="e3" style="max-width: 400px; margin: auto;" class="grey lighten-3" >
-
-    <v-toolbar color="pink">
-      <v-toolbar-side-icon></v-toolbar-side-icon>
-      <v-toolbar-title class="white--text">My Music</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>search</v-icon>
-      </v-btn>
-    </v-toolbar>
+  <div id="e3" style="max-width: 550px; margin: auto;" class="grey lighten-3" >
 
     <v-container fluid style="min-height: 0;" grid-list-lg>
       <v-layout row wrap>
@@ -27,48 +18,194 @@
         </v-flex>
 
         <v-flex xs12>
-          <v-card color="cyan darken-2" class="white--text">
+          <v-card color="blue-grey darken-2" class="white--text">
             <v-container fluid grid-list-lg>
-              <v-layout row>
-                <v-flex xs7>
+
+              <v-layout>
+                <v-flex>
                   <div>
                     <div class="headline">Supermodel</div>
                     <div>Foster the People</div>
                   </div>
                 </v-flex>
-                <v-flex xs5>
+              </v-layout>
+
+              <v-layout row>          
+                <v-flex>
                   <v-card-media
-                    src="/static/doc-images/cards/foster.jpg"
-                    height="125px"
+                    src="/bby-driver.jpg"
+                    height="300px"
                     contain
                   ></v-card-media>
                 </v-flex>
-              </v-layout>
+              </v-layout>  
+
             </v-container>
           </v-card>
         </v-flex>
 
         <v-flex xs12>
-          <v-card color="purple" class="white--text">
+          <v-card color="blue-grey darken-2" class="white--text">
             <v-container fluid grid-list-lg>
-              <v-layout row>
-                <v-flex xs7>
+
+              <v-layout>
+                <v-flex>
                   <div>
-                    <div class="headline">Halycon Days</div>
-                    <div>Ellie Goulding</div>
+                    <div class="headline">Supermodel</div>
+                    <div>Foster the People</div>
                   </div>
                 </v-flex>
-                <v-flex xs5>
-                    <v-card-media
-                      src="/static/doc-images/cards/halcyon.png"
-                      height="125px"
-                      contain
-                    ></v-card-media>
-                </v-flex>
               </v-layout>
+
+              <v-layout row>          
+                <v-flex>
+                  <v-card-media
+                    src="/edege-tomorrow.jpg"
+                    height="300px"
+                    contain
+                  ></v-card-media>
+                </v-flex>
+              </v-layout>  
             </v-container>
           </v-card>
         </v-flex>
+
+        <v-flex xs12>
+          <v-card color="blue-grey darken-2" class="white--text">
+            <v-container fluid grid-list-lg>
+
+              <v-layout>
+                <v-flex>
+                  <div>
+                    <div class="headline">Supermodel</div>
+                    <div>Foster the People</div>
+                  </div>
+                </v-flex>
+              </v-layout>
+
+              <v-layout row>          
+                <v-flex>
+                  <v-card-media
+                    src="/fifth-element.jpg"
+                    height="300px"
+                    contain
+                  ></v-card-media>
+                </v-flex>
+              </v-layout>  
+
+            </v-container>
+          </v-card>
+        </v-flex>
+
+        <v-flex xs12>
+          <v-card color="blue-grey darken-2" class="white--text">
+            <v-container fluid grid-list-lg>
+
+              <v-layout>
+                <v-flex>
+                  <div>
+                    <div class="headline">Supermodel</div>
+                    <div>Foster the People</div>
+                  </div>
+                </v-flex>
+              </v-layout>
+
+              <v-layout row>          
+                <v-flex>
+                  <v-card-media
+                    src="/kavinsky.jpg"
+                    height="300px"
+                    contain
+                  ></v-card-media>
+                </v-flex>
+              </v-layout>  
+
+            </v-container>
+          </v-card>
+        </v-flex>
+
+        <v-flex xs12>
+          <v-card color="blue-grey darken-2" class="white--text">
+            <v-container fluid grid-list-lg>
+
+              <v-layout>
+                <v-flex>
+                  <div>
+                    <div class="headline">Supermodel</div>
+                    <div>Foster the People</div>
+                  </div>
+                </v-flex>
+              </v-layout>
+
+              <v-layout row>          
+                <v-flex>
+                  <v-card-media
+                    src="/MMIII-k.jpg"
+                    height="300px"
+                    contain
+                  ></v-card-media>
+                </v-flex>
+              </v-layout>  
+
+            </v-container>
+          </v-card>
+        </v-flex>
+
+        <v-flex xs12>
+          <v-card color="blue-grey darken-2" class="white--text">
+            <v-container fluid grid-list-lg>
+
+              <v-layout>
+                <v-flex>
+                  <div>
+                    <div class="headline">Supermodel</div>
+                    <div>Foster the People</div>
+                  </div>
+                </v-flex>
+              </v-layout>
+
+              <v-layout row>          
+                <v-flex>
+                  <v-card-media
+                    src="/sinsajo.jpeg"
+                    height="300px"
+                    contain
+                  ></v-card-media>
+                </v-flex>
+              </v-layout>  
+
+            </v-container>
+          </v-card>
+        </v-flex>
+
+        <v-flex xs12>
+          <v-card color="blue-grey darken-2" class="white--text">
+            <v-container fluid grid-list-lg>
+
+              <v-layout>
+                <v-flex>
+                  <div>
+                    <div class="headline">Supermodel</div>
+                    <div>Foster the People</div>
+                  </div>
+                </v-flex>
+              </v-layout>
+
+              <v-layout row>          
+                <v-flex>
+                  <v-card-media
+                    src="/wonder-woman.jpg"
+                    height="300px"
+                    contain
+                  ></v-card-media>
+                </v-flex>
+              </v-layout>  
+
+            </v-container>
+          </v-card>
+        </v-flex>
+
+        
 
       </v-layout>
     </v-container>

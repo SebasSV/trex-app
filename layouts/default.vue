@@ -27,6 +27,8 @@
 
       <v-btn>Language</v-btn>
       <v-btn>Loggin</v-btn>
+      <fb-loggin></fb-loggin>
+
 
     </v-toolbar>
 
@@ -48,21 +50,26 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Tres-App'
-      }
+import fbLoggin from '~/components/fbLoggin.vue'
+
+export default {
+  components: {
+    fbLoggin
+  },
+  data () {
+    return {
+      clipped: false,
+      drawer: true,
+      fixed: false,
+      items: [
+        { icon: 'apps', title: 'Welcome', to: '/' },
+        { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'Tres-App'
     }
   }
+}
 </script>

@@ -27,7 +27,6 @@
 
       <v-btn>Language</v-btn>
       <v-btn>Loggin</v-btn>
-      <fb-loggin></fb-loggin>
 
 
     </v-toolbar>
@@ -50,12 +49,8 @@
 </template>
 
 <script>
-import fbLoggin from '~/components/fbLoggin.vue'
 
 export default {
-  components: {
-    fbLoggin
-  },
   data () {
     return {
       clipped: false,

@@ -13,7 +13,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "nuxt": "^1.0.0-rc11",
-    "vue-facebook-signin-button": "^1.0.1",
     "vuetify": "^0.16.9"
   },
   "devDependencies": {

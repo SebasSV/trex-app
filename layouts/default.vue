@@ -25,8 +25,9 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn>Language</v-btn>
-      <v-btn>Loggin</v-btn>
+      <dialog-login></dialog-login>
+      <v-btn>Facebook</v-btn>
+      <!-- <a href="http://localhost:8080/login">Facebook</a> -->
 
 
     </v-toolbar>
@@ -49,7 +50,7 @@
 </template>
 
 <script>
-
+import dialogLogin from '~/components/DialogLogin.vue'
 export default {
   data () {
     return {
@@ -63,8 +64,11 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Tres-App'
+      title: '3A'
     }
+  },
+  components: {
+    dialogLogin
   }
 }
 </script>

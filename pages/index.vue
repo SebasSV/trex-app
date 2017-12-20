@@ -8,16 +8,19 @@
         <v-flex xs12>        
           <v-card color="blue-grey darken-2" class="white--text">
             <v-card-title primary-title>
-              <div class="headline">Unlimited music now</div>
-              <div>Listen to your favorite artists and albums whenever and wherever, online and offline.</div>
+              <v-layout wrap>              
+                <v-flex xs12>
+                  <v-text-field v-model="body" label="Post Something"></v-text-field>
+                </v-flex>                                
+            </v-layout>
             </v-card-title>
             <v-card-actions>
-              <v-btn flat dark>Listen now</v-btn>
+              <v-btn @click="publishPost" flat dark>Publish Post</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
 
-        <index-cards></index-cards>
+        <index-cards></index-cards>      
         
 
       </v-layout>
@@ -27,25 +30,43 @@
 
 <script>
 import indexCards from '~/pages/indexCards.vue'
+import axios from 'axios'
 
 export default {
   data () {
     return {
-      clipped: false,
-      drawer: true,
-      fixed: false,
-      items: [
-        { icon: 'apps', title: 'Welcome', to: '/' },
-        { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Tres-App'
+      body: ''
     }
   },
   components: {
     indexCards
+  },
+  methods: {
+    publishPost () {
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/post',
+        headers: {'Content-Type': 'application/json'},
+        data: {
+          name: 'name',
+          body: this.body
+        },
+        params: {
+          access_token: this.getCookie('access_token')
+        }
+      }).then(function (response) {
+        if (response) {
+          console.log(response)
+          this.dialog = false
+          this.$emit('reloadPosts')
+        }
+      }.bind(this))
+    },
+    getCookie (name) {
+      var value = '; ' + document.cookie
+      var parts = value.split('; ' + name + '=')
+      if (parts.length === 2) return parts.pop().split(';').shift()
+    }
   }
 }
 </script>

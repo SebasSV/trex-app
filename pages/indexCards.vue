@@ -33,9 +33,11 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      posts: []
+      posts: [],
+      counter: 0
     }
   },
+  props: ['canI'],
   mounted () {
     this.fetchPosts()
   },
@@ -49,7 +51,12 @@ export default {
     }
   },
   watch: {
-    '$route': 'fetchPosts'
+    canI: function () {
+      if (this.canI) {
+        this.fetchPosts()
+        this.$emit('increment')
+      }
+    }
   }
 }
 </script>

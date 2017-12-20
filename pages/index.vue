@@ -20,7 +20,7 @@
           </v-card>
         </v-flex>
 
-        <index-cards></index-cards>      
+        <index-cards :canI="childState" v-on:increment="lockChild" ></index-cards>      
         
 
       </v-layout>
@@ -35,7 +35,8 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      body: ''
+      body: '',
+      childState: false
     }
   },
   components: {
@@ -57,8 +58,9 @@ export default {
       }).then(function (response) {
         if (response) {
           console.log(response)
+          this.childState = true
           this.dialog = false
-          this.$emit('reloadPosts')
+          this.body = ''
         }
       }.bind(this))
     },
@@ -66,6 +68,9 @@ export default {
       var value = '; ' + document.cookie
       var parts = value.split('; ' + name + '=')
       if (parts.length === 2) return parts.pop().split(';').shift()
+    },
+    lockChild: function () {
+      this.childState = false
     }
   }
 }

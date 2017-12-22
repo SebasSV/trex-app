@@ -3,23 +3,13 @@
 <div class="flex xs12">
     <v-flex xs12 v-for="post in posts" :key="post.id">
         <v-card color="blue-grey darken-2" class="white--text">
-            <v-container fluid grid-list-lg>
-                <!-- <v-layout>
-                    <v-flex>
-                        <div>
-                            <div class="headline">Supermodel</div>
-                            <div>{{post.name}}</div>
-                        </div>
-                    </v-flex>
-                </v-layout> -->
-
+            <v-container fluid grid-list-lg>              
               <v-layout row>          
                     <v-flex>
                         <div>{{post.body}}</div>
                             <v-card-media src="/bby-driver.jpg" height="300px" contain></v-card-media>
                     </v-flex>
               </v-layout>  
-
             </v-container>
         </v-card>
     </v-flex>
@@ -37,7 +27,9 @@ export default {
       counter: 0
     }
   },
-  props: ['canI'],
+  props: {
+    canI: {type: Boolean, required: true}
+  },
   mounted () {
     this.fetchPosts()
   },

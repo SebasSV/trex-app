@@ -1,10 +1,9 @@
 <template>
 
   <div id="e3" style="max-width: 550px; margin: auto;" class="grey lighten-3" >
-
     <v-container fluid style="min-height: 0;" grid-list-lg>
-      <v-layout row wrap>
-        
+      <v-layout row wrap> 
+
         <v-flex xs12>        
           <v-card color="blue-grey darken-2" class="white--text">
             <v-card-title primary-title>
@@ -20,12 +19,11 @@
           </v-card>
         </v-flex>
 
-        <index-cards :canI="childState" v-on:increment="lockChild" ></index-cards>      
-        
-
+        <index-cards :canI="childState" v-on:increment="lockChild" ></index-cards>            
       </v-layout>
     </v-container>
   </div>
+
 </template>
 
 <script>
@@ -36,7 +34,8 @@ export default {
   data () {
     return {
       body: '',
-      childState: false
+      childState: false,
+      loged: false
     }
   },
   components: {

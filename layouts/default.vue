@@ -27,6 +27,7 @@
 
       <dialog-login></dialog-login>
       <v-btn>Facebook</v-btn>
+      <user-interface></user-interface>
       <!-- <a href="http://localhost:8080/login">Facebook</a> -->
 
 
@@ -51,6 +52,7 @@
 
 <script>
 import dialogLogin from '~/components/DialogLogin.vue'
+import UserInterface from '~/components/UserInterface.vue'
 export default {
   data () {
     return {
@@ -68,7 +70,8 @@ export default {
     }
   },
   components: {
-    dialogLogin
+    dialogLogin,
+    UserInterface
   }
 }
 </script>

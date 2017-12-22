@@ -51,9 +51,9 @@ export default {
         data: params
       }).then(function (response) {
         if (response) {
+          this.dialog = false
           document.cookie = 'access_token=' + response.data.access_token + ';path=/'
           document.location.replace('/')
-          this.dialog = false
         }
       }.bind(this))
     }

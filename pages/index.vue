@@ -4,7 +4,7 @@
     <v-container fluid style="min-height: 0;" grid-list-lg>
       <v-layout row wrap> 
 
-        <v-flex xs12>        
+        <v-flex xs12 v-if="loged" >        
           <v-card color="blue-grey darken-2" class="white--text">
             <v-card-title primary-title>
               <v-layout wrap>              
@@ -41,6 +41,9 @@ export default {
   components: {
     indexCards
   },
+  mounted () {
+    this.loadUserOptions()
+  },
   methods: {
     publishPost () {
       axios({
@@ -68,8 +71,13 @@ export default {
       var parts = value.split('; ' + name + '=')
       if (parts.length === 2) return parts.pop().split(';').shift()
     },
-    lockChild: function () {
+    lockChild () {
       this.childState = false
+    },
+    loadUserOptions () {
+      if (this.getCookie('access_token')) {
+        this.loged = true
+      }
     }
   }
 }

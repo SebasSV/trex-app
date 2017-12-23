@@ -4,8 +4,8 @@
     <!-- Navigation bbar left side -->
     <v-navigation-drawer persistent :mini-variant="!miniVariant" :clipped="!clipped" v-model="drawer" app>
       <v-list>
-        <v-list-tile  router :to="item.to" :key="i" v-for="(item, i) in items" exact>
-          <v-list-tile-action>
+        <v-list-tile router :to="item.to" :key="i" v-for="(item, i) in items" exact>
+          <v-list-tile-action v-if="item.can">
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
@@ -25,8 +25,8 @@
 
       <v-spacer></v-spacer>
 
-      <dialog-login></dialog-login>
-      <v-btn>Facebook</v-btn>
+      <dialog-login v-if="!loged"></dialog-login>
+      <v-btn v-if="!loged">Facebook</v-btn>
       <user-interface></user-interface>
       <!-- <a href="http://localhost:8080/login">Facebook</a> -->
 
@@ -36,7 +36,7 @@
     <!-- Main nuxtPages -->
     <main>
       <v-content>
-        <v-container>
+        <v-container grid-list-md text-xs-center fluid>
           <nuxt />
         </v-container>
       </v-content>
@@ -59,19 +59,35 @@ export default {
       clipped: false,
       drawer: true,
       fixed: false,
-      items: [
-        { icon: 'apps', title: 'Welcome', to: '/' },
-        { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-      ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: '3A'
+      title: '3A',
+      loged: false,
+      items: [
+        { icon: 'apps', title: 'Welcome', to: '/', can: true },
+        { icon: 'bubble_chart', title: 'Inspire', to: '/inspire', can: true }
+      ]
     }
   },
   components: {
     dialogLogin,
     UserInterface
+  },
+  mounted () {
+    this.loadUserOptions()
+  },
+  methods: {
+    loadUserOptions () {
+      if (this.getCookie('access_token')) {
+        this.loged = true
+      }
+    },
+    getCookie (name) {
+      var value = '; ' + document.cookie
+      var parts = value.split('; ' + name + '=')
+      if (parts.length === 2) return parts.pop().split(';').shift()
+    }
   }
 }
 </script>

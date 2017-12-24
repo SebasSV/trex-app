@@ -4,10 +4,15 @@
           <v-avatar v-if="loged" @click="goToInspire" size="36px" slot="activator">
             <img src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"  alt="">
           </v-avatar>
-          <strong>{{ username }}</strong>                              
+          <strong v-if="loged">{{ username }}</strong>                              
           <v-btn v-if="loged" @click="home">
-            <v-icon>home</v-icon>
+            <v-icon>home</v-icon>home
           </v-btn>
+          <v-btn v-if="loged" @click="logout">
+            logout
+          </v-btn>
+
+          
           <dialog-login  v-if="!loged"></dialog-login>
           <v-btn  v-if="!loged">Facebook</v-btn>
           
@@ -55,11 +60,31 @@ export default {
       var parts = value.split('; ' + name + '=')
       if (parts.length === 2) return parts.pop().split(';').shift()
     },
+    delete_cookie (name) {
+      document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+    },
     goToInspire () {
       this.$router.push('/inspire')
     },
     home () {
       this.$router.push('/')
+    },
+    logout () {
+      axios({
+        method: 'get',
+        url: 'http://localhost:8080/getUsername',
+        headers: {'Content-Type': 'application/json'},
+        params: {
+          access_token: this.getCookie('access_token')
+        }
+      }).then(function (response) {
+        if (response) {
+          this.loged = false
+          this.$emit('logout')
+          this.delete_cookie('access_token')
+          this.$router.go('/')
+        }
+      }.bind(this))
     }
   }
 }

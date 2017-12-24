@@ -2,7 +2,7 @@
   <v-app>
 
     <!-- Navigation bbar left side -->
-      <v-navigation-drawer persistent :mini-variant="!miniVariant" :clipped="!clipped" v-model="drawer" app>
+      <v-navigation-drawer v-if="loged" persistent :mini-variant="!miniVariant" :clipped="!clipped" v-model="drawer" app>
         <v-list>
           <v-list-tile router :to="item.to" :key="i" v-for="(item, i) in items" exact>
            <v-list-tile-action v-if="item.can">
@@ -21,7 +21,7 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
 
       <v-spacer></v-spacer>      
-      <user-interface></user-interface>
+      <user-interface v-on:logout="loged = false"></user-interface>
       
       <!-- <a href="http://localhost:8080/login">Facebook</a> -->
 
@@ -71,7 +71,7 @@ export default {
   methods: {
     loadUserOptions () {
       if (this.getCookie('access_token')) {
-        // this.loged = true
+        this.loged = true
       }
     },
     getCookie (name) {

@@ -14,7 +14,7 @@
 
           
           <dialog-login  v-if="!loged"></dialog-login>
-          <v-btn  v-if="!loged">Facebook</v-btn>
+          <v-btn  @click="facebookLogin" v-if="!loged">Facebook</v-btn>
           
     </div>
 </template>
@@ -69,22 +69,19 @@ export default {
     home () {
       this.$router.push('/')
     },
-    logout () {
+    getUser () {
       axios({
         method: 'get',
-        url: 'http://localhost:8080/getUsername',
-        headers: {'Content-Type': 'application/json'},
-        params: {
-          access_token: this.getCookie('access_token')
-        }
+        url: 'http://localhost:8080/user',
+        headers: {'Content-Type': 'application/json'}
       }).then(function (response) {
         if (response) {
-          this.loged = false
-          this.$emit('logout')
-          this.delete_cookie('access_token')
-          this.$router.go('/')
+          return 'some'
         }
-      }.bind(this))
+      })
+    },
+    facebookLogin () {
+      window.location.href = 'http://localhost:8080/login/facebook'
     }
   }
 }

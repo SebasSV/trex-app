@@ -19,7 +19,7 @@
       <div id="e3" style="max-width: 550px; margin: auto;" class="grey lighten-3" >
         <v-container fluid style="min-height: 0;" grid-list-lg>
           <v-layout row wrap> 
-            <index-cards></index-cards>   
+            <index-cards-user></index-cards-user>   
           </v-layout>
         </v-container> 
       </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import indexCards from '~/pages/indexCards.vue'
+import indexCardsUser from '~/components/IndexCardsUser.vue'
 import axios from 'axios'
 
 export default {
@@ -37,7 +37,7 @@ export default {
     }
   },
   components: {
-    indexCards
+    indexCardsUser
   },
   mounted () {
     this.loadUserOptions()

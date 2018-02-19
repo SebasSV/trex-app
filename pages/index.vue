@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import indexCards from '~/pages/indexCards.vue'
+import indexCards from '~/components/IndexCards.vue'
 import axios from 'axios'
 
 export default {

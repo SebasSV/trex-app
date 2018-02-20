@@ -10,8 +10,23 @@
               <v-layout wrap>              
                 <v-flex xs12>
                   <v-text-field v-model="body" label="Post Something"></v-text-field>
-                </v-flex>                                
-            </v-layout>
+                </v-flex> 
+                
+                <ul>
+                  <li v-for="file in files">{{file.name}}</li>
+                </ul>
+                <file-upload
+                    ref="upload"
+                    v-model="files"
+                    post-action="/post.method"
+                    put-action="/put.method"
+                    @input-file="inputFile"
+                    @input-filter="inputFilter"
+                >
+                Upload file
+                </file-upload>
+                
+              </v-layout>
             </v-card-title>
             <v-card-actions>
               <v-btn @click="publishPost" flat dark>Publish Post</v-btn>
@@ -27,7 +42,9 @@
 </template>
 
 <script>
+import FileUpload from 'vue-upload-component'
 import indexCards from '~/components/IndexCards.vue'
+// import fileUpload from '~/components/FileUpload2.vue'
 import axios from 'axios'
 
 export default {
@@ -35,11 +52,13 @@ export default {
     return {
       body: '',
       childState: false,
-      loged: false
+      loged: false,
+      files: []
     }
   },
   components: {
-    indexCards
+    indexCards,
+    FileUpload
   },
   mounted () {
     this.loadUserOptions()
@@ -53,6 +72,7 @@ export default {
         data: {
           name: 'name',
           body: this.body
+          // files: this.files
         },
         params: {
           access_token: this.getCookie('access_token')

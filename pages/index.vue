@@ -17,17 +17,19 @@
                 <file-upload
                     ref="upload"
                     v-model="files"
-                    post-action="http://localhost:8080/post?access_token=35ff8cdb-75d6-477b-a8d4-988c4f238a09"
+                    post-action="http://localhost:8080/post"
+                    :data="{access_token: getCookie('access_token')}"
                 >
                 Upload file
                 </file-upload>              
-                <button v-show="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true" type="button">Start upload</button>
-                <button v-show="$refs.upload && $refs.upload.active" @click.prevent="$refs.upload.active = false" type="button">Stop upload</button>
+                
+                <!-- <button v-show="$refs.upload && $refs.upload.active" @click.prevent="$refs.upload.active = false" type="button">Stop upload</button> -->
                 
               </v-layout>
             </v-card-title>
             <v-card-actions>
-              <v-btn @click="publishPost" flat dark>Publish Post</v-btn>
+              <v-btn v-show="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true" flat dark>Start upload</v-btn>
+              <!-- <v-btn @click="publishPost" flat dark>Publish Post</v-btn> -->
             </v-card-actions>
           </v-card>
         </v-flex>

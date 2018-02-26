@@ -21,10 +21,7 @@
                     :data="{access_token: getCookie('access_token')}"
                 >
                 Upload file
-                </file-upload>              
-                
-                <!-- <button v-show="$refs.upload && $refs.upload.active" @click.prevent="$refs.upload.active = false" type="button">Stop upload</button> -->
-                
+                </file-upload>                                                          
               </v-layout>
             </v-card-title>
             <v-card-actions>

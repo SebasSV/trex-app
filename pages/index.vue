@@ -11,20 +11,18 @@
                 <v-flex xs12>
                   <v-text-field v-model="body" label="Post Something"></v-text-field>
                 </v-flex> 
-                
                 <ul>
                   <li v-for="file in files">{{file.name}}</li>
                 </ul>
                 <file-upload
                     ref="upload"
                     v-model="files"
-                    post-action="/post.method"
-                    put-action="/put.method"
-                    @input-file="inputFile"
-                    @input-filter="inputFilter"
+                    post-action="http://localhost:8080/post?access_token=35ff8cdb-75d6-477b-a8d4-988c4f238a09"
                 >
                 Upload file
-                </file-upload>
+                </file-upload>              
+                <button v-show="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true" type="button">Start upload</button>
+                <button v-show="$refs.upload && $refs.upload.active" @click.prevent="$refs.upload.active = false" type="button">Stop upload</button>
                 
               </v-layout>
             </v-card-title>
@@ -65,14 +63,19 @@ export default {
   },
   methods: {
     publishPost () {
+      var fData = new FormData()
+      fData.append('file', this.files)
+
       axios({
         method: 'post',
         url: 'http://localhost:8080/post',
-        headers: {'Content-Type': 'application/json'},
-        data: {
-          name: 'name',
-          body: this.body
-          // files: this.files
+        // headers: {'Content-Type': 'application/json'},
+        data:
+        // fData,
+        {
+        // name: 'name',
+        // body: this.body,
+          file: this.files
         },
         params: {
           access_token: this.getCookie('access_token')
